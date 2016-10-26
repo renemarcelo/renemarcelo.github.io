@@ -1,5 +1,6 @@
-/* GLOBAL STYLIN ############################## */
-/* Style borrowed from http://cathydeng.github.io/chill-color-picker */
+body {
+  margin: 8px;
+}
 
 p{
     font-family: 'Source Sans Pro', sans-serif;
@@ -17,7 +18,7 @@ a:link, a:visited, a:hover, a:active{
     color: #444;
 }
 
-button{
+#btn-minimal{
     background-color: Transparent;
     outline:none;
     border: 2px solid;
