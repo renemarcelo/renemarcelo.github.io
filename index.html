@@ -8,7 +8,7 @@
 
   <title>Rene.Codes</title>
 
-  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,600' rel='stylesheet' type='text/css'>
   <link href="./public/css/normalize.css" rel="stylesheet" />
   <link href="./public/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./public/css/theme.css" />
@@ -21,7 +21,7 @@
   <div class="center">
     <p id="btn-code"></p>
     <div id="project"></div>
-    <a id="btn-minimal" class="btn btn-default" href="https://github.com/renemarcelo?tab=activity" target="_blank" role="button">Rene.Codes</a>
+    <a id="btn-minimal" class="btn btn-default" href="//github.com/renemarcelo?tab=activity" target="_blank" role="button">Rene.Codes</a>
     </div>
 
     <div id="expand" >
@@ -44,17 +44,17 @@
 
     <footer class="footer">
       <div class="container">
-        <p><small>Github Information Page at <a href="https://github.com/renemarcelo">https://github.com/renemarcelo</a></small></p>
+        <p><small>Github Information Page at <a href="//github.com/renemarcelo">github.com/renemarcelo</a></small></p>
       </div>
     </footer>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="./public/js/bootstrap.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
     <script>
     //grab info from GitHub
-    $.when( $.getJSON( "https://api.github.com/users/renemarcelo/repos?sort=pushed" ) ).then(function( data, textStatus, jqXHR ) {
+    $.when( $.getJSON( "//api.github.com/users/renemarcelo/repos?sort=pushed" ) ).then(function( data, textStatus, jqXHR ) {
       $.each(data, function(i, json){
         json['worked-on'] = moment(json['updated_at']).fromNow();
 
@@ -71,7 +71,7 @@
 
 
         } else {
-          console.log(2, "other homepage, (live)");
+          // console.log(2, "other homepage, (live)");
         }
         }
         // labels += "<span class='label label-info' style='background-color:#" +  "'>" + json['description'] + "</span> ";
@@ -91,7 +91,7 @@
         }
         else {
           // $("#working-groups tbody").append(html);
-          console.log(1, "has staging: ");
+          // console.log(1, "has staging: ");
         }
       });
     });
