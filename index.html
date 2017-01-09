@@ -9,7 +9,7 @@
   <title>Rene.Codes</title>
 
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600' rel='stylesheet' type='text/css'>
-  <link href="./public/css/normalize.css" rel="stylesheet" />  
+  <link href="./public/css/normalize.css" rel="stylesheet" />
   <link href="./public/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./public/css/theme.css" />
   <!-- <link rel="icon" type="image/png" href="favicon.png" /> -->
@@ -27,13 +27,13 @@
     <div id="expand" >
       <div class='row'>
         <div class='col-xs-9 col-xs-offset-1'>
-      <h3 id='staging'>Previews</h3>
-      <p> These are projects I may be currently working on.
+      <h3 id='staging'>Project Previews</h3>
+      <p> These are topics I might be currently working on.
       </div>
 
       <div class='col-xs-10 col-xs-offset-1'>
 
-        <table id='staging-list' class='table table-bordered'>
+        <table id='live-list' class='table table-bordered'>
           <tbody>
           </tbody>
         </table>
@@ -59,15 +59,20 @@
         json['worked-on'] = moment(json['updated_at']).fromNow();
 
         var labels = '';
-        var has_staging = false;
+        // var has_staging = false;
+        var has_live = false;
         var subd_title = '';
         if (json['homepage']) {
-          if (json['homepage'].includes('.rene.codes')) {
-            has_staging = true;
-            subd_title = json['homepage'].split('//')[1].replace('.rene.codes', ' (staging)');
-          } else {
-            console.log(2, "other homepage");
-          }
+          if (json['homepage'].includes('https://')) {
+            // has_staging = true;
+            // subd_title = json['homepage'].split('//')[1].replace('.rene.codes', ' (staging)');
+            has_live = true;
+            subd_title = json['homepage'].split('//')[1] + ' ' + '<span class="text-muted" style="font-size:10px;text-decoration:underline"> GO THERE</span';
+
+
+        } else {
+          console.log(2, "other homepage, (live)");
+        }
         }
         // labels += "<span class='label label-info' style='background-color:#" +  "'>" + json['description'] + "</span> ";
 
@@ -80,13 +85,13 @@
           </td>\
         </tr>\
         ";
-        if (has_staging) {
-
-          $("#staging-list tbody").append(html);
+        // none for staging list
+        if ( has_live ) {
+          $("#live-list tbody").append(html);
         }
         else {
           // $("#working-groups tbody").append(html);
-          console.log(1, "has staging: ", has_staging);
+          console.log(1, "has staging: ");
         }
       });
     });
