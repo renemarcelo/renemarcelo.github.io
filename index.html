@@ -13,34 +13,62 @@
   <link href="./public/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./public/css/theme.css" />
   <!-- <link rel="icon" type="image/png" href="favicon.png" /> -->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./public/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./public/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./public/favicon-16x16.png">
+  <link rel="manifest" href="./public/site.webmanifest">
+  <link rel="mask-icon" href="./public/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="./public/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2b5797">
+  <meta name="msapplication-config" content="./public/browserconfig.xml">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- facebook -->
+  <meta property="og:image" content="./public/og-image.jpg">
+<meta property="og:image:width" content="192">
+<meta property="og:image:height" content="192">
+<meta property="og:title" content="Rene.codes">
+<meta property="og:description" content="Ren&eacute; officially and actually had his name published in a medical journal.">
+<meta property="og:url" content="https://rene.codes">
+
+
+  <style>
+  a:hover {
+    text-decoration: none;
+  }
+  .footer {
+    position: inherit;
+  }
+  </style>
 </head>
 
 
 <body>
   <div class='container-fluid'>
-  <div class="center">
-    <p id="btn-code"></p>
-    <div id="project"></div>
-    <a id="btn-minimal" class="btn btn-default" href="//github.com/renemarcelo?tab=activity" target="_blank" role="button">Rene.Codes</a>
+    <div class="center">
+      <p id="btn-code"></p>
+      <div id="project"></div>
+      <a id="btn-minimal" class="btn btn-default" href="//github.com/renemarcelo?tab=activity" target="_blank" role="button">Rene.Codes</a>
     </div>
 
     <div id="expand" >
       <div class='row'>
         <div class='col-xs-9 col-xs-offset-1'>
-      <h3 id='staging'>Project Previews</h3>
-      <p> These are topics I might be currently working on.
-      </div>
+          <h3 id='staging'>Project Previews</h3>
+          <p> These are topics I might be currently working on.
+          </div>
 
-      <div class='col-xs-10 col-xs-offset-1'>
+          <div class='col-xs-10 col-xs-offset-1'>
 
-        <table id='live-list' class='table table-bordered'>
-          <tbody>
-          </tbody>
-        </table>
-</div>
-</div>
+            <table id='live-list' class='table table-bordered'>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-</div>
+    </div>
 
     <footer class="footer">
       <div class="container">
@@ -59,44 +87,36 @@
         json['worked-on'] = moment(json['updated_at']).fromNow();
 
         var labels = '';
-        // var has_staging = false;
+
+        var icon = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"> \
+        <path d="M0 0h24v24H0z" fill="none"/> \
+        <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h10v4h8v10z"/> \
+        </svg>'
+
         var has_live = false;
         var subd_title = '';
         if (json['homepage']) {
           if (json['homepage'].includes('https://')) {
-            // has_staging = true;
-            // subd_title = json['homepage'].split('//')[1].replace('.rene.codes', ' (staging)');
             has_live = true;
-            subd_title = json['homepage'].split('//')[1] + ' ' + '<span class="text-muted" style="font-size:10px;text-decoration:underline"> GO THERE</span';
-
-
-        } else {
-          // console.log(2, "other homepage, (live)");
+            subd_title = json['homepage'].split('//')[1] + ' '  + icon;
+          }
         }
-        }
-        // labels += "<span class='label label-info' style='background-color:#" +  "'>" + json['description'] + "</span> ";
 
         var html = "\
         <tr>\
-          <td>\
-            <h4><strong><a href='" + json['homepage'] + "' target='_blank'>" + subd_title + "</a></strong> " + "<em>" + "</em></h4>\
-            <span>" + json['description'] + ".</span>\
-            <p>With code at <a href='" + json['html_url'] + "' target='_blank'>" + json['html_url'] + ",</a> worked on as recent as " + json['worked-on'] + "</p>\
-          </td>\
+        <td>\
+        <h4><strong><a href='" + json['homepage'] + "' target='_blank'>" + subd_title + "</a></strong> " + "<em>" + "</em></h4>\
+        <span>" + json['description'] + "</span>\
+        <p>With code at <a href='" + json['html_url'] + "' target='_blank'>" + json['html_url'] + ",</a> worked on as recent as " + json['worked-on'] + "</p>\
+        </td>\
         </tr>\
         ";
-        // none for staging list
+
         if ( has_live ) {
           $("#live-list tbody").append(html);
-        }
-        else {
-          // $("#working-groups tbody").append(html);
-          // console.log(1, "has staging: ");
         }
       });
     });
     </script>
-
-
   </body>
   </html>
